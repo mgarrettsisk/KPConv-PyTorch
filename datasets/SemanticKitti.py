@@ -62,7 +62,7 @@ class SemanticKittiDataset(PointCloudDataset):
         ##########################
 
         # Dataset folder
-        self.path = '../../Data/SemanticKitti'
+        self.path = 'E:\Semantic-KITTI\dataset'
 
         # Type of task conducted on this dataset
         self.dataset_task = 'slam_segmentation'
@@ -582,7 +582,7 @@ class SemanticKittiDataset(PointCloudDataset):
 
         if self.set in ['training', 'validation']:
 
-            class_frames_bool = np.zeros((0, self.num_classes), dtype=np.bool)
+            class_frames_bool = np.zeros((0, self.num_classes), dtype=bool)
             self.class_proportions = np.zeros((self.num_classes,), dtype=np.int32)
 
             for s_ind, (seq, seq_frames) in enumerate(zip(self.sequences, self.frames)):
@@ -604,7 +604,7 @@ class SemanticKittiDataset(PointCloudDataset):
                     print('Preparing seq {:s} class frames. (Long but one time only)'.format(seq))
 
                     # Class frames as a boolean mask
-                    seq_class_frames = np.zeros((len(seq_frames), self.num_classes), dtype=np.bool)
+                    seq_class_frames = np.zeros((len(seq_frames), self.num_classes), dtype=bool)
 
                     # Proportion of each class
                     seq_proportions = np.zeros((self.num_classes,), dtype=np.int32)
@@ -852,7 +852,7 @@ class SemanticKittiSampler(Sampler):
         """
         return self.N
 
-    def calib_max_in(self, config, dataloader, untouched_ratio=0.8, verbose=True, force_redo=False):
+    def calib_max_in(self, config, dataloader, untouched_ratio=0.8, verbose=True, force_redo=True):
         """
         Method performing batch and neighbors calibration.
             Batch calibration: Set "batch_limit" (the maximum number of points allowed in every batch) so that the
@@ -969,7 +969,7 @@ class SemanticKittiSampler(Sampler):
         print('Calibration done in {:.1f}s\n'.format(time.time() - t0))
         return
 
-    def calibration(self, dataloader, untouched_ratio=0.9, verbose=False, force_redo=False):
+    def calibration(self, dataloader, untouched_ratio=0.9, verbose=True, force_redo=True):
         """
         Method performing batch and neighbors calibration.
             Batch calibration: Set "batch_limit" (the maximum number of points allowed in every batch) so that the
