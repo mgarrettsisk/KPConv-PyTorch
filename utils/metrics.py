@@ -32,7 +32,7 @@ import numpy as np
 #       \***************/
 #
 
-def fast_confusion(true, pred, label_values=None):
+def fast_confusion(true, pred, label_values):
     """
     Fast confusion matrix (100x faster than Scikit learn). But only works if labels are la
     :param true:
