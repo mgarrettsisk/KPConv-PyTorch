@@ -40,10 +40,13 @@ def fast_confusion(true, pred, label_values):
     :param num_classes:
     :return:
     """
-
+    print("Truth, original shape: " + str(np.shape(true)))
+    print("Pred, original shape: " + str(np.shape(pred)))
     # Ensure data is in the right format
-    true = np.squeeze(true)
-    pred = np.squeeze(pred)
+    # true = np.squeeze(true)
+    # pred = np.squeeze(pred)
+    # print("Truth, squeezed shape: " + str(np.shape(true)))
+    # print("Pred, squeezed shape: " + str(np.shape(pred)))
     if len(true.shape) != 1:
         raise ValueError('Truth values are stored in a {:d}D array instead of 1D array'. format(len(true.shape)))
     if len(pred.shape) != 1:

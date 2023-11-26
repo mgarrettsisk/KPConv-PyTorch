@@ -119,7 +119,7 @@ class SemanticKittiConfig(Config):
     deform_radius = 6.0
 
     # Radius of the area of influence of each kernel point in "number grid cell". (1.0 is the standard value)
-    KP_extent = 1.2
+    KP_extent = 1.0
 
     # Behavior of convolutions in ('constant', 'linear', 'gaussian')
     KP_influence = 'linear'
@@ -129,7 +129,7 @@ class SemanticKittiConfig(Config):
 
     # Choice of input features
     first_features_dim = 128
-    in_features_dim = 2
+    in_features_dim = 4
 
     # Can the network learn modulations
     modulated = False
@@ -220,7 +220,7 @@ if __name__ == '__main__':
 
     # Choose here if you want to start training from a previous snapshot (None for new training)
     # previous_training_path = 'Log_2020-03-19_19-53-27'
-    previous_training_path = 'Log_2023-07-22_22-49-44'
+    previous_training_path = ''
 
     # Choose index of checkpoint to start from. If None, uses the latest chkp
     chkp_idx = None
@@ -301,7 +301,7 @@ if __name__ == '__main__':
     t1 = time.time()
     net = KPFCNN(config, training_dataset.label_values, training_dataset.ignored_labels)
 
-    debug = False
+    debug = True
     if debug:
         print('\n*************************************\n')
         print(net)
