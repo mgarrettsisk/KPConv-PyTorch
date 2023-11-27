@@ -800,6 +800,8 @@ class SemanticKittiSampler(Sampler):
 
             # Stack the chosen indices of all classes
             gen_indices = torch.cat(gen_indices, dim=0)
+            print("\nShape of gen_indices: " + str(gen_indices.shape))
+            print("\n")
             gen_classes = torch.cat(gen_classes, dim=0)
 
             # Shuffle generated indices

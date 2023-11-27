@@ -26,3 +26,6 @@ if __name__ == '__main__':
     training_sampler.calibration(training_loader,
                                  verbose=True)
 
+    for batch in training_loader:
+        print(batch.neighbors)
+
